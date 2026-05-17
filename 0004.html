@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدفاع المدني - غزة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+        body {
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* المظهر العام والالوان */
+        .hdr {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #cc0000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .main-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .main-logo img {
+            width: 70px;
+            height: auto;
+        }
+        .logo-txt h1 {
+            font-size: 20px;
+            color: #1a1a1a;
+        }
+        .logo-txt p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* زر الطوارئ السريع */
+        .btn-102 {
+            background: #cc0000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            min-width: 120px;
+        }
+        .btn-102 h2 {
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .btn-102 p {
+            font-size: 11px;
+        }
+
+        /* البانر المتحرك عاجل */
+        .news-bar {
+            background: #990000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            height: 45px;
+        }
+        .news-title {
+            background: #fff;
+            color: #cc0000;
+            padding: 0 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 2;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+        }
+        .news-scroll {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .news-txt {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: marquee 25s linear infinite;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .news-scroll:hover .news-txt {
+            animation-play-state: paused;
+        }
+        @keyframes marquee {
+            0% { transform: translate3d(-100%, 0, 0); }
+            100% { transform: translate3d(100%, 0, 0); }
+        }
+
+        /* القائمة */
+        .main-nav {
+            background: #1a1a1a;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .main-nav::-webkit-scrollbar {
+            display: none;
+        }
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0 3%;
+        }
+        .main-nav ul li a {
+            display: block;
+            color: #fff;
+            padding: 15px 18px;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .main-nav ul li a:hover, .main-nav ul li a.active {
+            background: #cc0000;
+        }
+
+        /* محتوى الصفحة */
+        .content {
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+        .grid-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .item-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid #1a1a1a;
+            text-decoration: none;
+            color: #333;
+        }
+        .item-card:hover {
+            transform: translateY(-3px);
+            border-color: #cc0000;
+        }
+        .item-card i {
+            font-size: 36px;
+            color: #cc0000;
+            margin-bottom: 12px;
+        }
+        .item-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        .item-card p {
+            font-size: 13.5px;
+            color: #666;
+        }
+        .item-card.archive {
+            border-top-color: #2c3e50;
+        }
+        .item-card.archive i {
+            color: #2c3e50;
+        }
+
+        /* الفوتر */
+        .ftr {
+            background: #1a1a1a;
+            color: #aaa;
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 40px;
+            font-size: 13px;
+            border-top: 3px solid #cc0000;
+        }
+
+        /* شاشات الجوال */
+        @media (max-width: 600px) {
+            .hdr {
+                justify-content: center;
+                text-align: center;
+                padding: 15px 2%;
+            }
+            .main-logo {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .logo-txt h1 {
+                font-size: 18px;
+            }
+            .btn-102 {
+                width: 100%;
+                padding: 12px;
+            }
+            .content h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hdr">
+        <div class="main-logo">
+            <img src="pcd-logo_0.png" alt="شعار الدفاع المدني">
+            <div class="logo-txt">
+                <h1>الدفاع المدني الفلسطيني</h1>
+                <p>المديرية العامة - قطاع غزة</p>
+            </div>
+        </div>
+        
+        <a href="tel:102" class="btn-102">
+            <h2>102</h2>
+            <p>اتصل فوراً للطوارئ</p>
+        </a>
+    </div>
+
+    <div class="news-bar">
+        <div class="news-title">تحديث عاجل</div>
+        <div class="news-scroll">
+            <div class="news-txt">طواقمنا تتعامل حالياً مع استهداف في المحافظة الوسطى، يرجى إخلاء الطرق لسيارات الإسعاف وبقاء المواطنين في أماكن آمنة.</div>
+        </div>
+    </div>
+
+    <div class="main-nav">
+        <ul>
+            <li><a href="#" class="active">الرئيسية</a></li>
+            <li><a href="#">إرشادات السلامة</a></li>
+            <li><a href="#">المتطوعين</a></li>
+            <li><a href="#">البحث عن مفقودين</a></li>
+            <li><a href="#">التقارير اليومية</a></li>
+            <li><a href="#">اتصل بنا</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2 style="margin-bottom: 20px; border-right: 4px solid #cc0000; padding-right: 10px; font-size: 20px;">الخدمات والمنصات الرقمية المساندة</h2>
+        
+        <div class="grid-box">
+            
+            <a href="#" class="item-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>بوابة التوعية والتحصين</h3>
+                <p>تحميل كتيبات الطوارئ وإرشادات الإخلاء المنزلي بصيغة خفيفة تعمل بدون إنترنت.</p>
+            </a>
+
+            <a href="#" class="item-card">
+                <i class="fa-solid fa-users-medical"></i>
+                <h3>شبكة الاستجابة الشعبية</h3>
+                <p>منصة تسجيل المتطوعين من أطباء ومسعفين داخل الأحياء لتقديم الدعم الميداني العاجل.</p>
+            </a>
+
+            <a href="#" class="item-card">
+                <i class="fa-solid fa-magnifying-glass-id"></i>
+                <h3>منظومة المفقودين والشهداء</h3>
+                <p>البحث بالاسم أو رقم الهوية عن المفقودين وحالات انتشال الضحايا من تحت الأنقاض.</p>
+            </a>
+
+            <a href="#" class="item-card archive">
+                <i class="fa-solid fa-box-archive"></i>
+                <h3>الأرشيف الخاص بالدفاع المدني</h3>
+                <p>توثيق شامل لكافة الاستهدافات، خرائط الركام الجغرافية، والانتهاكات بحق طواقمنا الإنسانية.</p>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="ftr">
+        <p>جميع الحقوق محفوظة &copy; الدفاع المدني الفلسطيني - فادي عمر - قطاع غزة 2026</p>
+    </div>
+
+</body>
+</html>
