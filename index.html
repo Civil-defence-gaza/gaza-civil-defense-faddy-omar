@@ -9,7 +9,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background: #f4f4f4; color: #333; line-height: 1.6; }
         
-        /* الهيدر والعناصر الثابتة */
         .hdr { background: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #cc0000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-wrap: wrap; gap: 15px; }
         .main-logo { display: flex; align-items: center; gap: 15px; }
         .main-logo img { width: 70px; height: auto; }
@@ -18,29 +17,23 @@
         .btn-102 { background: #cc0000; color: #fff; padding: 10px 20px; border-radius: 8px; text-align: center; text-decoration: none; min-width: 120px; }
         .btn-102 h2 { font-size: 26px; font-weight: bold; line-height: 1; }
 
-        /* شريط عاجل */
         .news-bar { background: #990000; color: #fff; display: flex; align-items: center; overflow: hidden; height: 45px; }
         .news-title { background: #fff; color: #cc0000; padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 14px; z-index: 2; box-shadow: 5px 0 15px rgba(0,0,0,0.2); }
         .news-scroll { flex: 1; overflow: hidden; display: flex; align-items: center; }
         .news-txt { display: inline-block; white-space: nowrap; padding-right: 100%; animation: marquee 25s linear infinite; font-size: 15px; font-weight: bold; }
         @keyframes marquee { 0% { transform: translate3d(-100%, 0, 0); } 100% { transform: translate3d(100%, 0, 0); } }
 
-        /* القائمة العلوية وإضاءة التبويب النشط */
         .main-nav { background: #1a1a1a; overflow-x: auto; white-space: nowrap; }
         .main-nav::-webkit-scrollbar { display: none; }
         .main-nav ul { display: flex; list-style: none; padding: 0 3%; }
         .main-nav ul li a { display: block; color: #fff; padding: 15px 18px; text-decoration: none; font-size: 15px; cursor: pointer; }
-        
-        /* تأثير البقاء مضيئاً عند الضغط والتفعيل للرابط */
         .main-nav ul li a:hover, .main-nav ul li a.active { background: #cc0000; color: #fff; }
 
-        /* حاويات الصفحات والأقسام */
         .content { max-width: 1200px; margin: 25px auto; padding: 0 15px; min-height: 500px; }
         .page-section { display: none; }
         .page-section.active { display: block; }
         
-        /* الكروت والشبكة */
-        .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
+        .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
         .item-card { background: #fff; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border-top: 4px solid #1a1a1a; text-decoration: none; color: #333; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
         .item-card:hover { transform: translateY(-3px); border-color: #cc0000; }
         .item-card i { font-size: 36px; color: #cc0000; margin-bottom: 12px; }
@@ -51,18 +44,20 @@
         .item-card.media-card { border-top-color: #27ae60; }
         .item-card.media-card i { color: #27ae60; }
 
-        /* جداول وقوائم البيانات */
-        .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .data-table th, .data-table td { padding: 12px; text-align: right; border-bottom: 1px solid #eee; font-size: 14px; }
+        /* حاوية مرنة لحل مشكلة تداخل الجداول على الجوال */
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .table-responsive::-webkit-scrollbar { height: 5px; }
+        .table-responsive::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+        .data-table { width: 100%; border-collapse: collapse; background: #fff; min-width: 600px; /* يمنع انضغاط الجدول ويجبره على التمرير الانسيابي */ }
+        .data-table th, .data-table td { padding: 12px; text-align: right; border-bottom: 1px solid #eee; font-size: 14px; white-space: nowrap; /* يمنع نزول النص لسطر جديد وتداخله */ }
         .data-table th { background: #222; color: #fff; }
         
-        /* أزرار الإدارة والتحكم */
         .del-btn { background: #c0392b; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; }
         .admin-zone { display: none; background: #ebf5fb; border: 1px solid #a9ccee; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
         .admin-indicator { display: none; background: #2980b9; color: #fff; text-align: center; padding: 5px; font-size: 12px; font-weight: bold; }
         .admin-data-title { margin-top: 30px; color: #2980b9; display: none; border-right: 4px solid #2980b9; padding-right: 10px; }
 
-        /* النوافذ المنبثقة والاستمارة */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 999; padding: 15px; }
         .modal-box { background: #fff; width: 100%; max-width: 550px; border-radius: 8px; padding: 25px; border-top: 5px solid #cc0000; position: relative; max-height: 90vh; overflow-y: auto; }
         .close-btn { position: absolute; top: 15px; left: 15px; font-size: 20px; cursor: pointer; color: #666; }
@@ -71,14 +66,13 @@
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
         .submit-btn { background: #cc0000; color: #fff; border: none; padding: 10px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold; }
         
-        /* تابات المعرض التوثيقي */
         .media-tabs { display: flex; gap: 10px; margin-bottom: 15px; }
         .tab-btn { background: #ddd; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
         .tab-btn.active { background: #27ae60; color: #fff; }
         .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
         .media-item { background: #fff; border-radius: 6px; overflow: hidden; padding: 10px; border: 1px solid #ddd; text-align: center; }
         .media-item img, .media-item video { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; }
-        .download-media-btn { background: #34495e; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; margin-top: 8px; cursor: pointer; width: 100%; display: block; text-decoration: none; ... }
+        .download-media-btn { background: #34495e; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; margin-top: 8px; cursor: pointer; width: 100%; display: block; text-decoration: none; }
 
         .ftr { background: #1a1a1a; color: #aaa; text-align: center; padding: 20px 15px; margin-top: 40px; font-size: 13px; border-top: 3px solid #cc0000; }
         .secret-name { cursor: default; color: #aaa; user-select: none; }
@@ -86,10 +80,17 @@
         .action-btn { background: #27ae60; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; display: none; }
         .logout-btn { background: #c0392b; display: none; }
 
+        /* تحسينات الشاشات الصغيرة والجوال بالكامل لضمان الانسيابية */
         @media (max-width: 600px) {
             .hdr { justify-content: center; text-align: center; padding: 15px 2%; }
             .main-logo { flex-direction: column; gap: 8px; }
             .btn-102 { width: 100%; padding: 12px; }
+            .content { padding: 0 10px; margin: 15px auto; }
+            .grid-box { grid-template-columns: 1fr; gap: 10px; } /* جعل الكروت طوية مريحة للعين */
+            .modal-box { padding: 15px; width: 95%; }
+            .admin-zone { padding: 10px; }
+            .admin-zone div { flex-direction: column; gap: 8px; }
+            .admin-zone button { width: 100%; }
         }
     </style>
 </head>
@@ -174,16 +175,20 @@
             </div>
             
             <h3>إحصائية العالقين تحت الأنقاض الحالية حسب الجنس والمناطق</h3>
-            <table class="data-table">
-                <thead><tr><th>المنطقة / الحي السكني</th><th>مفقودين (ذكور)</th><th>مفقودين (إناث)</th></tr></thead>
-                <tbody id="rubbleCitizenTableBody"></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead><tr><th>المنطقة / الحي السكني</th><th>مفقودين (ذكور)</th><th>مفقودين (إناث)</th></tr></thead>
+                    <tbody id="rubbleCitizenTableBody"></tbody>
+                </table>
+            </div>
 
             <h3 class="admin-data-title" id="rubbleAdminTitle"><i class="fa-solid fa-unlock"></i> كشف البلاغات التفصيلي السري (للإدارة فقط)</h3>
-            <table class="data-table" id="rubbleAdminTable" style="display:none;">
-                <thead><tr><th>اسم المفقود</th><th>الجنس</th><th>الهوية</th><th>موقع المنزل بدقة</th><th>صاحب المنزل</th><th>الأدوار</th><th>بيانات المبلغ</th><th>إجراء</th></tr></thead>
-                <tbody id="rubbleAdminTableBody"></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="data-table" id="rubbleAdminTable" style="display:none;">
+                    <thead><tr><th>اسم المفقود</th><th>الجنس</th><th>الهوية</th><th>موقع المنزل بدقة</th><th>صاحب المنزل</th><th>الأدوار</th><th>بيانات المبلغ</th><th>إجراء</th></tr></thead>
+                    <tbody id="rubbleAdminTableBody"></tbody>
+                </table>
+            </div>
         </div>
 
         <div id="sec-missing" class="page-section">
@@ -193,16 +198,20 @@
             </div>
             
             <h3>التوزيع الإحصائي الإجمالي للمفقودين حسب المناطق</h3>
-            <table class="data-table">
-                <thead><tr><th>المنطقة</th><th>الحالة المرصودة</th><th>إجمالي البلاغات المسجلة</th></tr></thead>
-                <tbody id="missingCitizenTableBody"></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead><tr><th>المنطقة</th><th>الحالة المرصودة</th><th>إجمالي البلاغات المسجلة</th></tr></thead>
+                    <tbody id="missingCitizenTableBody"></tbody>
+                </table>
+            </div>
 
             <h3 class="admin-data-title" id="missingAdminTitle"><i class="fa-solid fa-unlock"></i> كشف المفقودين التفصيلي الشامل والتعديل (للإدارة فقط)</h3>
-            <table class="data-table" id="missingAdminTable" style="display:none;">
-                <thead><tr><th>اسم المفقود</th><th>هوية المفقود</th><th>الحالة</th><th>منطقة الاستهداف</th><th>تفاصيل المبلغ الكاملة</th><th>إجراء</th></tr></thead>
-                <tbody id="missingAdminTableBody"></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="data-table" id="missingAdminTable" style="display:none;">
+                    <thead><tr><th>اسم المفقود</th><th>هوية المفقود</th><th>الحالة</th><th>منطقة الاستهداف</th><th>تفاصيل المبلغ الكاملة</th><th>إجراء</th></tr></thead>
+                    <tbody id="missingAdminTableBody"></tbody>
+                </table>
+            </div>
         </div>
 
         <div id="sec-volunteers" class="page-section">
@@ -212,16 +221,20 @@
             </div>
 
             <h3>إحصائيات وتوزيع الطواقم التطوعية الحالية بالأحياء (أعداد إجمالية)</h3>
-            <table class="data-table">
-                <thead><tr><th>مكان السكن الحركي</th><th>التخصص الميداني</th><th>عدد الكوادر الجاهزة</th></tr></thead>
-                <tbody id="volCitizenTableBody"></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead><tr><th>مكان السكن الحركي</th><th>التخصص الميداني</th><th>عدد الكوادر الجاهزة</th></tr></thead>
+                    <tbody id="volCitizenTableBody"></tbody>
+                </table>
+            </div>
 
             <h3 class="admin-data-title" id="volAdminTitle"><i class="fa-solid fa-unlock"></i> الكشف التفصيلي للكوادر التطوعية وسجل الاتصال (للإدارة فقط)</h3>
-            <table class="data-table" id="volAdminTable" style="display:none;">
-                <thead><tr><th>اسم المتطوع</th><th>التخصص</th><th>السكن بدقة</th><th>رقم الجوال</th><th>إجراء</th></tr></thead>
-                <tbody id="volAdminTableBody"></tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="data-table" id="volAdminTable" style="display:none;">
+                    <thead><tr><th>اسم المتطوع</th><th>التخصص</th><th>السكن بدقة</th><th>رقم الجوال</th><th>إجراء</th></tr></thead>
+                    <tbody id="volAdminTableBody"></tbody>
+                </table>
+            </div>
         </div>
 
         <div id="sec-media" class="page-section">
@@ -243,7 +256,7 @@
         </div>
 
         <div id="sec-archive" class="page-section">
-            <h2 style="margin-bottom: 20px; border-right: 4px solid #2c3e50; padding-right: 10px;">الأرشيف الحقوقي والتقارير الكبرى للدفاع المدني</h2>
+            <h2 style="margin-bottom: 20px; border-right: 4px solid #2c3e50; padding-right: 10px;">أرشيف التقارير الكبرى للدفاع المدني</h2>
             <div class="admin-zone" id="archiveAdminZone">
                 <h4>أرشفة حدث توثيقي حقوقي جديد</h4>
                 <div style="display: flex; gap: 10px; flex-direction: column;">
@@ -327,17 +340,12 @@
             renderAllData();
         };
 
-        // دالة التنقل المحدثة لتثبيت اللون الأحمر على القسم النشط تلقائياً
         function switchSection(secId) {
-            // إخفاء كافة الأقسام
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            // إلغاء تفعيل كافة روابط القائمة
             document.querySelectorAll('.main-nav ul li a').forEach(a => a.classList.remove('active'));
             
-            // إظهار القسم المستهدف
             document.getElementById('sec-' + secId).classList.add('active');
             
-            // إضاءة التبويب المقابل في القائمة العلوية حتى لو جاء النقر من كروت الصفحة الرئيسية
             const activeLink = document.getElementById('lnk-' + secId);
             if(activeLink) activeLink.classList.add('active');
             
@@ -379,7 +387,7 @@
         function logoutAdmin() {
             isAdmin = false;
             document.getElementById('adminNotice').style.display = 'none';
-            document.getElementById('mediaAdminZone').style.none = 'block';
+            document.getElementById('mediaAdminZone').style.display = 'none';
             document.getElementById('archiveAdminZone').style.display = 'none';
             document.getElementById('rubbleAdminTitle').style.display = 'none';
             document.getElementById('rubbleAdminTable').style.display = 'none';
@@ -479,7 +487,6 @@
         }
 
         function renderAllData() {
-            // 1. عرض جدول شهداء الأنقاض الإحصائي (بدون عمود الرصد العام)
             const rubble = JSON.parse(localStorage.getItem('rubble_data')) || [];
             const rubbleCitTbody = document.getElementById('rubbleCitizenTableBody');
             if(rubbleCitTbody) {
@@ -506,7 +513,6 @@
                 });
             }
 
-            // 2. سجل المفقودين
             const missing = JSON.parse(localStorage.getItem('missing_data')) || [];
             const misCitTbody = document.getElementById('missingCitizenTableBody');
             if(misCitTbody) {
@@ -533,7 +539,6 @@
                 });
             }
 
-            // 3. المتطوعين
             const vols = JSON.parse(localStorage.getItem('volunteers_data')) || [];
             const volCitTbody = document.getElementById('volCitizenTableBody');
             if(volCitTbody) {
@@ -556,11 +561,10 @@
                 vols.forEach((item, idx) => {
                     let tr = document.createElement('tr');
                     tr.innerHTML = `<td><strong>${item.name}</strong></td><td>${item.job}</td><td>${item.area}</td><td>${item.phone}</td><td><button class="del-btn" onclick="deleteItem('volunteers_data', ${idx})">حذف</button></td>`;
-                    volAdmTbody.appendChild(tr);
+                    volAdminTbody.appendChild(tr);
                 });
             }
 
-            // 4. المعرض التوثيقي
             const media = JSON.parse(localStorage.getItem('media_data')) || [];
             const gallery = document.getElementById('mediaGalleryContainer');
             if(gallery) {
@@ -577,7 +581,6 @@
                 });
             }
 
-            // 5. الأرشيف الحقوقي
             const archive = JSON.parse(localStorage.getItem('archive_data')) || [];
             const archContainer = document.getElementById('archiveContainer');
             if(archContainer) {
