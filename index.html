@@ -10,15 +10,23 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-0JMS8FYER4');
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background: #f4f4f4; color: #333; line-height: 1.6; }
+        /* إضافة حماية على مستوى الـ CSS تمنع تحديد أو تظليل النصوص نهائياً */
+        body { 
+            background: #f4f4f4; 
+            color: #333; 
+            line-height: 1.6;
+            -webkit-user-select: none; /* حماية متصفحات الكروم وسفاري وجوالات الآيفون */
+            -moz-user-select: none;    /* حماية متصفح فايرفوكس */
+            -ms-user-select: none;     /* حماية متصفحات إكسبلورر */
+            user-select: none;         /* منع التحديد العام */
+        }
         
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
         .hdr { background: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #cc0000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-wrap: wrap; gap: 15px; }
         .main-logo { display: flex; align-items: center; gap: 15px; }
         .main-logo img { width: 70px; height: auto; }
@@ -89,7 +97,6 @@
         .action-btn { background: #27ae60; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; display: none; }
         .logout-btn { background: #c0392b; display: none; }
 
-        /* تنسيق قسم عداد الزوار الإحصائي */
         .visitor-counter-wrapper { margin-top: 12px; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 12px; color: #888; }
         .visitor-counter-wrapper img { height: 20px; vertical-align: middle; border-radius: 3px; }
 
@@ -344,29 +351,44 @@
     </div>
 
     <script>
+        // 1. منع الزر الأيمن للماوس (Right Click)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. منع اختصارات لوحة المفاتيح الشائعة لسرقة الكود
+        document.addEventListener('keydown', function(e) {
+            // منع F12 (أدوات المطورين)
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+            // منع Ctrl+U (عرض السورس كود)
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+            }
+            // منع Ctrl+Shift+I (أدوات المطورين المتقدمة)
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+            }
+            // منع Ctrl+C (النسخ)
+            if (e.ctrlKey && e.key === 'c') {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+    <script>
         let isAdmin = false;
         let clickCounter = 0;
         let clickTimer;
         let currentMediaFilter = 'image';
 
-        window.onload = function() {
-            if(!localStorage.getItem('rubble_data')) localStorage.setItem('rubble_data', JSON.stringify([]));
-            if(!localStorage.getItem('missing_data')) localStorage.setItem('missing_data', JSON.stringify([]));
-            if(!localStorage.getItem('volunteers_data')) localStorage.setItem('volunteers_data', JSON.stringify([]));
-            if(!localStorage.getItem('media_data')) localStorage.setItem('media_data', JSON.stringify([]));
-            if(!localStorage.getItem('archive_data')) localStorage.setItem('archive_data', JSON.stringify([]));
-            renderAllData();
-        };
-
         function switchSection(secId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.main-nav ul li a').forEach(a => a.classList.remove('active'));
-            
             document.getElementById('sec-' + secId).classList.add('active');
-            
             const activeLink = document.getElementById('lnk-' + secId);
             if(activeLink) activeLink.classList.add('active');
-            
             renderAllData();
         }
 
