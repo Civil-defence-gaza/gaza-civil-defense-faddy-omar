@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدفاع المدني - غزة</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JMS8FYER4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0JMS8FYER4');
+    </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
@@ -33,7 +43,7 @@
         .page-section { display: none; }
         .page-section.active { display: block; }
         
-        .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
+        .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; }
         .item-card { background: #fff; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border-top: 4px solid #1a1a1a; text-decoration: none; color: #333; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
         .item-card:hover { transform: translateY(-3px); border-color: #cc0000; }
         .item-card i { font-size: 36px; color: #cc0000; margin-bottom: 12px; }
@@ -44,13 +54,12 @@
         .item-card.media-card { border-top-color: #27ae60; }
         .item-card.media-card i { color: #27ae60; }
 
-        /* حاوية مرنة لحل مشكلة تداخل الجداول على الجوال */
         .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .table-responsive::-webkit-scrollbar { height: 5px; }
         .table-responsive::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
 
-        .data-table { width: 100%; border-collapse: collapse; background: #fff; min-width: 600px; /* يمنع انضغاط الجدول ويجبره على التمرير الانسيابي */ }
-        .data-table th, .data-table td { padding: 12px; text-align: right; border-bottom: 1px solid #eee; font-size: 14px; white-space: nowrap; /* يمنع نزول النص لسطر جديد وتداخله */ }
+        .data-table { width: 100%; border-collapse: collapse; background: #fff; min-width: 600px; }
+        .data-table th, .data-table td { padding: 12px; text-align: right; border-bottom: 1px solid #eee; font-size: 14px; white-space: nowrap; }
         .data-table th { background: #222; color: #fff; }
         
         .del-btn { background: #c0392b; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; }
@@ -80,13 +89,12 @@
         .action-btn { background: #27ae60; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; display: none; }
         .logout-btn { background: #c0392b; display: none; }
 
-        /* تحسينات الشاشات الصغيرة والجوال بالكامل لضمان الانسيابية */
         @media (max-width: 600px) {
             .hdr { justify-content: center; text-align: center; padding: 15px 2%; }
             .main-logo { flex-direction: column; gap: 8px; }
             .btn-102 { width: 100%; padding: 12px; }
             .content { padding: 0 10px; margin: 15px auto; }
-            .grid-box { grid-template-columns: 1fr; gap: 10px; } /* جعل الكروت طوية مريحة للعين */
+            .grid-box { grid-template-columns: 1fr; gap: 10px; }
             .modal-box { padding: 15px; width: 95%; }
             .admin-zone { padding: 10px; }
             .admin-zone div { flex-direction: column; gap: 8px; }
@@ -561,7 +569,7 @@
                 vols.forEach((item, idx) => {
                     let tr = document.createElement('tr');
                     tr.innerHTML = `<td><strong>${item.name}</strong></td><td>${item.job}</td><td>${item.area}</td><td>${item.phone}</td><td><button class="del-btn" onclick="deleteItem('volunteers_data', ${idx})">حذف</button></td>`;
-                    volAdminTbody.appendChild(tr);
+                    volAdmTbody.appendChild(tr);
                 });
             }
 
