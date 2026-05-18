@@ -89,6 +89,10 @@
         .action-btn { background: #27ae60; color: #fff; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; display: none; }
         .logout-btn { background: #c0392b; display: none; }
 
+        /* تنسيق قسم عداد الزوار الإحصائي */
+        .visitor-counter-wrapper { margin-top: 12px; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 12px; color: #888; }
+        .visitor-counter-wrapper img { height: 20px; vertical-align: middle; border-radius: 3px; }
+
         @media (max-width: 600px) {
             .hdr { justify-content: center; text-align: center; padding: 15px 2%; }
             .main-logo { flex-direction: column; gap: 8px; }
@@ -324,6 +328,12 @@
 
     <div class="ftr">
         <p>جميع الحقوق محفوظة &copy; الدفاع المدني الفلسطيني - <span class="secret-name" onclick="verifyAdminAccess()">فادي عمر</span> - قطاع غزة 2026</p>
+        
+        <div class="visitor-counter-wrapper">
+            <span><i class="fa-solid fa-eye"></i> إجمالي عدد الزيارات المرصودة:</span>
+            <img src="https://hits.securitank.com/v1/counted/badge.svg?id=civil-defence-gaza.github.io&style=flat-square&color=red&label=%20" alt="عداد الزوار حيا">
+        </div>
+
         <div class="admin-actions">
             <button id="btnDlRub" class="action-btn" style="background:#e67e22;" onclick="exportDataToTxt('rubble_data', 'بلاغات_تحت_الأنقاض')">تحميل كشف الأنقاض الكامل</button>
             <button id="btnDlMis" class="action-btn" style="background:#c0392b;" onclick="exportDataToTxt('missing_data', 'سجل_المفقودين_التفصيلي')">تحميل سجل المفقودين</button>
